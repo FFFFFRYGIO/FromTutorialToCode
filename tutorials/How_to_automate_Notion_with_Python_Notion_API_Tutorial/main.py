@@ -1,59 +1,63 @@
 # Source here: https://www.python-engineer.com/posts/notion-api-python/
 
 from datetime import datetime, timezone
-import os
-from pathlib import Path
-from dotenv import load_dotenv
-import requests
 
-env_path = Path(__file__).with_name("notion.env")
-load_dotenv(dotenv_path=env_path)
+from requests import delete
 
-NOTION_TOKEN = os.getenv("NOTION_TOKEN")
-DATABASE_ID = os.getenv("DATABASE_ID")
+from utils import delete_page, get_pages, create_page, update_page, get_page_id, delete_page
 
-headers = {
-    "Authorization": "Bearer " + NOTION_TOKEN,
-    "Content-Type": "application/json",
-    "Notion-Version": "2022-06-28",
-}
+def run_get_pages():
+    pages = get_pages()
 
-def get_pages(num_pages=None):
-    """
-    If num_pages is None, get all pages, otherwise just the defined number.
-    """
-    url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
+    for page in pages:
+        page_id = page["id"]
+        props = page["properties"]
+        url = props["URL"]["title"][0]["text"]["content"]
+        title = props["Title"]["rich_text"][0]["text"]["content"]
+        published = props["Published"]["date"]["start"]
+        published = datetime.fromisoformat(published)
+        print(url, title, published)
 
-    get_all = num_pages is None
-    page_size = 100 if get_all else num_pages
+def run_create_page():
+    title = "Test Title"
+    description = "Test Description"
+    published_date = datetime.now().astimezone(timezone.utc).isoformat()
+    data = {
+        "URL": {"title": [{"text": {"content": description}}]},
+        "Title": {"rich_text": [{"text": {"content": title}}]},
+        "Published": {"date": {"start": published_date, "end": None}}
+    }
 
-    payload = {"page_size": page_size}
-    response = requests.post(url, json=payload, headers=headers)
+    create_page(data)
 
-    data = response.json()
+def run_update_page():
+    page_id = get_page_id(index=-2)
 
-    # Comment this out to dump all data to a file
-    import json
-    with open('db.json', 'w', encoding='utf8') as f:
-       json.dump(data, f, ensure_ascii=False, indent=4)
+    new_date = datetime(2023, 1, 15).astimezone(timezone.utc).isoformat()
+    update_data = {"Published": {"date": {"start": new_date, "end": None}}}
 
-    results = data["results"]
-    while data["has_more"] and get_all:
-        payload = {"page_size": page_size, "start_cursor": data["next_cursor"]}
-        url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
-        response = requests.post(url, json=payload, headers=headers)
-        data = response.json()
-        results.extend(data["results"])
+    update_page(page_id, update_data)
 
-    return results
+def run_delete_page():
+    page_id = get_page_id(index=-1)
 
-pages = get_pages()
+    delete_page(page_id)
 
-for page in pages:
-    page_id = page["id"]
-    props = page["properties"]
-    url = props["URL"]["title"][0]["text"]["content"]
-    title = props["Title"]["rich_text"][0]["text"]["content"]
-    published = props["Published"]["date"]["start"]
-    published = datetime.fromisoformat(published)
-    print(url, title, published)
+
+if __name__ == "__main__":
+    run_get_pages()
+    run_create_page()
+    run_update_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    run_delete_page()
+    
