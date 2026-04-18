@@ -83,9 +83,7 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
 
     lines.append("## Description")
     lines.append("")
-    desc = description.strip().replace("\r\n", "\n")
-    if len(desc) > 1200:
-        desc = desc[:1200].rstrip() + "\n... (truncated)"
+    desc = description.strip().replace("\r\n", "\n").replace("~", "-")
     lines.append(desc if desc else "No description available.")
     lines.append("")
 
