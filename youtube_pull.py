@@ -89,34 +89,6 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
     lines.append(desc if desc else "No description available.")
     lines.append("")
 
-    # lines.append("## Video Information")
-    # lines.append("")
-    # lines.append(f"- **Title:** {title}")
-    # if video_id:
-    #     lines.append(f"- **Video ID:** `{video_id}`")
-    # lines.append(f"- **URL:** {webpage_url}")
-    # if uploader:
-    #     lines.append(f"- **Channel:** {uploader}")
-    # if channel_url:
-    #     lines.append(f"- **Channel URL:** {channel_url}")
-    # lines.append(f"- **Upload Date:** {upload_date or 'N/A'}")
-    # lines.append(f"- **Duration:** {duration or 'N/A'}")
-    # lines.append(f"- **Views:** {_format_number(view_count)}")
-    # lines.append(f"- **Likes:** {_format_number(like_count)}")
-    # lines.append(f"- **Comments:** {_format_number(comment_count)}")
-    # lines.append("")
-
-    # lines.append("## Tags")
-    # lines.append("")
-    # if tags:
-    #     for tag in tags[:30]:
-    #         lines.append(f"- {tag}")
-    #     if len(tags) > 30:
-    #         lines.append(f"- ... and {len(tags) - 30} more")
-    # else:
-    #     lines.append("- N/A")
-    # lines.append("")
-
     lines.append("## Generated")
     lines.append("")
     lines.append(f"- **Generated at (UTC):** {generated_at}")
@@ -160,4 +132,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
