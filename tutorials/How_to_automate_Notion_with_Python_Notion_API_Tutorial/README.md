@@ -1,6 +1,12 @@
 # How to automate Notion with Python | Notion API Tutorial
 This folder was generated from a YouTube video and can be used as a starting point for notes, code, and exercises based on the tutorial.
 
+## Setup
+
+1. Create Notion workspace, integration, page, database
+2. Put NOTION_TOKEN and DATABASE_ID into notion.env file
+3. run with `uv run py main.py`
+
 ## Description
 
 Learn how to work with the Notion API in Python.

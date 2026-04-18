@@ -1,2 +1,5 @@
 # Notion Environment Variables
 notion.env
+
+# Database dump to json file
+db.json
