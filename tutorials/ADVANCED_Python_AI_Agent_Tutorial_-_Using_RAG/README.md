@@ -33,5 +33,8 @@ Hashtags
 
 ## Generated
 
-- **Generated at (UTC):** 2026-04-18T15:34:30+00:00
-- **Source URL used:** https://youtu.be/ul0QsodYct4?si=HOySjS6qGu1Ltihv
+- **Generated at (UTC):** 2026-04-19T13:26:13+00:00
+- **Source URL used:** https://youtu.be/ul0QsodYct4?si=FxbdSiW-7QS6qV6d
+- **Video ID:** ul0QsodYct4
+- **YouTube channel:** [Tech With Tim](https://www.youtube.com/channel/UC4JX40jDee_tINbkjycV4Sg)
+- **Tags:** tech with tim, Advanced Python AI, AI Agent Tutorial, Tech with Tim Python, RAG AI Model, Python AI Projects, Python Programming, AI Development, Machine Learning Python, RAG Agent Creation, Artificial Intelligence Tutorial, Python Coding AI, Python RAG Tutorial, Tech with Tim AI, Advanced AI Programming, Python Machine Learning, Creating AI with Python, AI Technology Guide, Python AI Techniques, RAG Model Tutorial, AI Coding Guide
