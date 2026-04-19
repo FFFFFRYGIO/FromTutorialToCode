@@ -1,6 +1,7 @@
 import os
-import requests
 from pathlib import Path
+
+import requests
 from dotenv import load_dotenv
 
 env_path = Path(__file__).with_name("notion.env")
