@@ -48,8 +48,9 @@ agent = ReActAgent(llm=llm, tools=tools, verbose=True, system_prompt=context)
 
 async def main_loop():
     while (prompt := input("Enter a prompt (q to quit): ")) != "q":
-        handler = agent.run(prompt)   # or agent.run(user_msg=prompt)
+        handler = agent.run(user_msg=prompt)
         result = await handler
         print(result)
+
 
 asyncio.run(main_loop())
