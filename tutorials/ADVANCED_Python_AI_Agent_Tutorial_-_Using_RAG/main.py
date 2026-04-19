@@ -12,7 +12,9 @@ load_dotenv(dotenv_path=env_path)
 population_path = os.path.join("data", "population.csv")
 population_df = pd.read_csv(population_path)
 
-population_query_engine = PandasQueryEngine(df=population_df, verbose=True, instruction_str=instruction_str)
+population_query_engine = PandasQueryEngine(
+    df=population_df, verbose=True, instruction_str=instruction_str
+)
 
 population_query_engine.update_prompts({"pandas_prompt": new_prompt})
 
