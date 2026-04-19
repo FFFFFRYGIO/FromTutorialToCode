@@ -9,6 +9,7 @@ from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.experimental.query_engine.pandas import PandasQueryEngine
 from llama_index.llms.openai import OpenAI
 from note_engine import note_engine
+from pdf import canada_engine
 from prompts import context, instruction_str, new_prompt
 
 env_path = Path(__file__).with_name("openai.env")
@@ -38,6 +39,13 @@ tools = [
         metadata=ToolMetadata(
             name="population_data",
             description="this gives information at the world population and demographics",
+        ),
+    ),
+    QueryEngineTool(
+        query_engine=canada_engine,
+        metadata=ToolMetadata(
+            name="canada_data",
+            description="this gives detailed information about canada the country",
         ),
     ),
 ]
