@@ -6,5 +6,3 @@ List of countries that start with the letter 'J':
 3. Jordan
 Information about Canada
 The languages of Canada include English and French, which are the official languages, as well as many indigenous languages such as Cree, Inuktitut, and Ojibwe.
-
-# These are example notes saved by the notes engine, remove if You want to generate new ones
