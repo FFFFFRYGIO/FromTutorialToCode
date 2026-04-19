@@ -36,7 +36,8 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
     uploader = info.get("uploader") or info.get("channel") or info.get("uploader_id")
     channel_url = info.get("channel_url") or info.get("uploader_url")
     video_id = info.get("id")
-    tags = info.get("tags") if isinstance(info.get("tags"), list) else None
+    tags = info.get("tags")
+    tags_str = ", ".join(str(t) for t in tags) if isinstance(tags, list) else "no tags"
     description = info.get("description") or ""
 
     generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -62,7 +63,7 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
     lines.append(f"- **Source URL used:** {source_url}")
     lines.append(f"- **Video ID:** {video_id or 'N/A'}")
     lines.append(f"- **YouTube channel:** [{uploader}]({channel_url})")
-    lines.append(f"- **Tags:** {', '.join(str(t) for t in tags) if isinstance(tags, list) else 'no tags'}")
+    lines.append(f"- **Tags:** {tags_str}")
     lines.append("")
 
     (out_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
