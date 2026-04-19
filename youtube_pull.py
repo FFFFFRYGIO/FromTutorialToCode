@@ -62,7 +62,7 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
     lines.append(f"- **Source URL used:** {source_url}")
     lines.append(f"- **Video ID:** {video_id or 'N/A'}")
     lines.append(f"- **YouTube channel:** [{uploader}]({channel_url})")
-    lines.append(f"- **Tags:** {', '.join(str(t) for t in tags)}")
+    lines.append(f"- **Tags:** {', '.join(str(t) for t in tags) if isinstance(tags, list) else 'no tags'}")
     lines.append("")
 
     (out_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
