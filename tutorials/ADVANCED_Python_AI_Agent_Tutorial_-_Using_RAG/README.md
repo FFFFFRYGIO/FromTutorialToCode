@@ -1,6 +1,11 @@
 # ADVANCED Python AI Agent Tutorial - Using RAG
 This folder was generated from a YouTube video and can be used as a starting point for notes, code, and exercises based on the tutorial.
 
+## Setup
+
+1. Put OPENAI_API_KEY into openai.env file
+2. Remove data/notes.txt and data/canada/ contents for clear run
+
 ## Description
 
 In this video, I will be showing you how to create an artificial intelligence agent that will be able to use all of the tools that we provide it with. That's right, we will create and AI agent & give it various tools for it to use selectively based on the task at hand.
