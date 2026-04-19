@@ -8,3 +8,6 @@ dependencies = [
     "pre-commit>=4.5.1",
     "yt-dlp>=2026.3.17",
 ]
+
+[tool.ruff.lint]
+extend-select = ["I"]
