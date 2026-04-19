@@ -7,14 +7,15 @@ env_path = Path(__file__).with_name("notion.env")
 load_dotenv(dotenv_path=env_path)
 
 
-NOTION_TOKEN = os.getenv("NOTION_TOKEN")
-DATABASE_ID = os.getenv("DATABASE_ID")
+NOTION_TOKEN = os.getenv("NOTION_TOKEN") or ""
+DATABASE_ID = os.getenv("DATABASE_ID") or ""
 
 headers = {
     "Authorization": "Bearer " + NOTION_TOKEN,
     "Content-Type": "application/json",
     "Notion-Version": "2022-06-28",
 }
+
 
 def get_pages(num_pages=None):
     """
@@ -32,8 +33,9 @@ def get_pages(num_pages=None):
 
     # Comment this out to dump all data to a file
     import json
-    with open('db.json', 'w', encoding='utf8') as f:
-       json.dump(data, f, ensure_ascii=False, indent=4)
+
+    with open("db.json", "w", encoding="utf8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
     results = data["results"]
     while data["has_more"] and get_all:
@@ -45,6 +47,7 @@ def get_pages(num_pages=None):
 
     return results
 
+
 def create_page(data: dict):
     create_url = "https://api.notion.com/v1/pages"
 
@@ -53,6 +56,7 @@ def create_page(data: dict):
     res = requests.post(create_url, headers=headers, json=payload)
     # print(res.status_code)
     return res
+
 
 def get_page_id(index: int, num_pages=None):
     url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
@@ -67,6 +71,7 @@ def get_page_id(index: int, num_pages=None):
 
     return data["results"][index]["id"]
 
+
 def update_page(page_id: str, data: dict):
     url = f"https://api.notion.com/v1/pages/{page_id}"
 
@@ -74,6 +79,7 @@ def update_page(page_id: str, data: dict):
 
     res = requests.patch(url, json=payload, headers=headers)
     return res
+
 
 def delete_page(page_id: str):
     url = f"https://api.notion.com/v1/pages/{page_id}"

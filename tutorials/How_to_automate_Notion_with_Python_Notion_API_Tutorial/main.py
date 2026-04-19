@@ -2,19 +2,26 @@
 
 from datetime import datetime, timezone
 
-from utils import delete_page, get_pages, create_page, update_page, get_page_id, delete_page
+from utils import (
+    create_page,
+    delete_page,
+    get_page_id,
+    get_pages,
+    update_page,
+)
+
 
 def run_get_pages():
     pages = get_pages()
 
     for page in pages:
-        page_id = page["id"]
         props = page["properties"]
         url = props["URL"]["title"][0]["text"]["content"]
         title = props["Title"]["rich_text"][0]["text"]["content"]
         published = props["Published"]["date"]["start"]
         published = datetime.fromisoformat(published)
         print(url, title, published)
+
 
 def run_create_page():
     title = "Test Title"
@@ -23,10 +30,11 @@ def run_create_page():
     data = {
         "URL": {"title": [{"text": {"content": description}}]},
         "Title": {"rich_text": [{"text": {"content": title}}]},
-        "Published": {"date": {"start": published_date, "end": None}}
+        "Published": {"date": {"start": published_date, "end": None}},
     }
 
     create_page(data)
+
 
 def run_update_page():
     page_id = get_page_id(index=-2)
@@ -35,6 +43,7 @@ def run_update_page():
     update_data = {"Published": {"date": {"start": new_date, "end": None}}}
 
     update_page(page_id, update_data)
+
 
 def run_delete_page():
     page_id = get_page_id(index=-1)
