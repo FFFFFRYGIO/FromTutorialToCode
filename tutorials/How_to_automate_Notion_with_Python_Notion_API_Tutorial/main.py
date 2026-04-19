@@ -2,8 +2,6 @@
 
 from datetime import datetime, timezone
 
-from requests import delete
-
 from utils import delete_page, get_pages, create_page, update_page, get_page_id, delete_page
 
 def run_get_pages():
