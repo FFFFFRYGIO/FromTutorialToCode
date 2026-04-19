@@ -11,3 +11,6 @@ dependencies = [
 
 [tool.ruff.lint]
 extend-select = ["I"]
+
+[tool.mypy]
+explicit_package_bases = true
