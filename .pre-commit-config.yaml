@@ -11,3 +11,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: [types-requests]
+
+  - repo: https://github.com/fpgmaas/deptry
+    rev: 0.16.1
+    hooks:
+      - id: deptry
