@@ -10,6 +10,7 @@ load_dotenv(dotenv_path=env_path)
 
 INDEX_DIR = os.path.join(Path(__file__).parent, "data", "canada")
 
+
 def get_index(data, index_name):
     index = None
     if not os.path.exists(index_name):
