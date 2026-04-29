@@ -1,0 +1,6 @@
+---
+globs: *.py
+alwaysApply: false
+---
+
+After every change in python code validate is the change has correct setup with "uv run pre-commit run --all-files"
