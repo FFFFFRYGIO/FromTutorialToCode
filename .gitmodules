@@ -1,0 +1,3 @@
+[submodule "tutorials/AI_Coding_101_Ultimate_Prompt_Guide_(37_tips)/prompts"]
+	path = tutorials/AI_Coding_101_Ultimate_Prompt_Guide_(37_tips)/prompts
+	url = https://github.com/VoloBuilds/prompts.git
