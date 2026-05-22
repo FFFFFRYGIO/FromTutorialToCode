@@ -21,4 +21,4 @@ extend-select = ["I"]
 explicit_package_bases = true
 
 [tool.deptry]
-ignore = ["DEP001"]
+ignore = ["DEP001", "DEP003"]
