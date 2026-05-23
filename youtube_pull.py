@@ -8,15 +8,22 @@ from yt_dlp import YoutubeDL
 
 
 def _slugify_folder_name(title: str, max_len: int = 80) -> str:
+    """Build a folder name that is a valid Python identifier (importable package)."""
     s = title.strip()
     s = re.sub(r"[<>:\"/\\|?*\x00-\x1F]", " ", s)  # Windows-illegal + control chars
-    s = re.sub(r"\s+", " ", s).strip()
-    s = s.rstrip(". ")  # Windows forbids trailing dot/space
+    s = re.sub(
+        r"[-\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]+", "_", s
+    )  # hyphen / dash variants
+    s = re.sub(r"[^\w]+", "_", s)  # spaces, punctuation, etc.
+    s = re.sub(r"_+", "_", s).strip("_")
+    s = s.rstrip(".")  # Windows forbids trailing dot
     if not s:
         s = "untitled"
+    if s[0].isdigit():
+        s = f"tutorial_{s}"
     if len(s) > max_len:
-        s = s[:max_len].rstrip(". ")
-    return s.replace(" ", "_")
+        s = s[:max_len].rstrip("_")
+    return s
 
 
 def _extract_video_info(url: str) -> dict[str, Any]:
