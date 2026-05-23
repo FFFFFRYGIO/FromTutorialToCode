@@ -1,18 +1,20 @@
 from pathlib import Path
 
 from dotenv import load_dotenv
+from src.workflow import Workflow
 
 _AGENT_ROOT = Path(__file__).resolve().parent
 _TUTORIAL_ROOT = _AGENT_ROOT.parent
 
-for _env_dir in (_AGENT_ROOT, _TUTORIAL_ROOT / "simple-agent"):
-    load_dotenv(_env_dir / "openai.env")
-    load_dotenv(_env_dir / "firecrawl.env")
 
-from src.workflow import Workflow
+def _load_env() -> None:
+    for env_dir in (_AGENT_ROOT, _TUTORIAL_ROOT / "simple-agent"):
+        load_dotenv(env_dir / "openai.env")
+        load_dotenv(env_dir / "firecrawl.env")
 
 
 def main():
+    _load_env()
     workflow = Workflow()
     print("Developer Tools Research Agent")
 
