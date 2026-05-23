@@ -1,6 +1,6 @@
 # Source here: https://www.python-engineer.com/posts/notion-api-python/
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from utils import (
     create_page,
@@ -26,7 +26,7 @@ def run_get_pages():
 def run_create_page():
     title = "Test Title"
     description = "Test Description"
-    published_date = datetime.now().astimezone(timezone.utc).isoformat()
+    published_date = datetime.now().astimezone(UTC).isoformat()
     data = {
         "URL": {"title": [{"text": {"content": description}}]},
         "Title": {"rich_text": [{"text": {"content": title}}]},
@@ -39,7 +39,7 @@ def run_create_page():
 def run_update_page():
     page_id = get_page_id(index=-2)
 
-    new_date = datetime(2023, 1, 15).astimezone(timezone.utc).isoformat()
+    new_date = datetime(2023, 1, 15).astimezone(UTC).isoformat()
     update_data = {"Published": {"date": {"start": new_date, "end": None}}}
 
     update_page(page_id, update_data)
