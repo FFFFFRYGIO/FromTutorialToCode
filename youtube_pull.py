@@ -91,8 +91,7 @@ def main() -> int:
     folder_name = _slugify_folder_name(str(title))
     out_dir = base_dir / folder_name
     if out_dir.exists():
-        pass
-        # raise FileExistsError(f"Target folder already exists: {out_dir}")
+        raise FileExistsError(f"Target folder already exists: {out_dir}")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     _write_project_readme(out_dir, info, args.url)
