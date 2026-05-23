@@ -14,6 +14,7 @@ def _slugify_folder_name(title: str, max_len: int = 80) -> str:
     s = re.sub(
         r"[-\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]+", "_", s
     )  # hyphen / dash variants
+    s = re.sub(r"&", " and ", s)
     s = re.sub(r"[^\w]+", "_", s)  # spaces, punctuation, etc.
     s = re.sub(r"_+", "_", s).strip("_")
     s = s.rstrip(".")  # Windows forbids trailing dot
