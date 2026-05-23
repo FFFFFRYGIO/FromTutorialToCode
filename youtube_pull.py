@@ -1,6 +1,6 @@
 import argparse
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -40,7 +40,7 @@ def _write_project_readme(out_dir: Path, info: dict[str, Any], source_url: str) 
     tags_str = ", ".join(str(t) for t in tags) if isinstance(tags, list) else "no tags"
     description = info.get("description") or ""
 
-    generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    generated_at = datetime.now(UTC).isoformat(timespec="seconds")
 
     lines: list[str] = []
 
