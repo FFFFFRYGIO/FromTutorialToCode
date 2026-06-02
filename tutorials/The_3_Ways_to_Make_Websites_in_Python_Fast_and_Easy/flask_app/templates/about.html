@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}About · Flask{% endblock %}
+
+{% block content %}
+<h1>About this app</h1>
+<p>
+    This is a small task manager demonstrating the core features of
+    <strong>Flask</strong>, a lightweight Python web framework.
+</p>
+<ul>
+    <li>URL routing with dynamic parameters</li>
+    <li>Jinja2 templates with inheritance</li>
+    <li>Static files (CSS)</li>
+    <li>Form handling (GET/POST) and flash messages</li>
+    <li>A JSON REST API at <code>/api/tasks</code></li>
+    <li>Custom 404 error handling</li>
+</ul>
+{% endblock %}

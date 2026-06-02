@@ -1,0 +1,38 @@
+{% extends "tasks/base.html" %}
+
+{% block title %}Tasks · Django{% endblock %}
+
+{% block content %}
+<h1>Your Tasks</h1>
+<p class="muted">{{ remaining }} task(s) remaining.</p>
+
+<form class="add-form" action="{% url 'add_task' %}" method="post">
+    {% csrf_token %}
+    {{ form.title }}
+    {{ form.priority }}
+    <button type="submit">Add</button>
+</form>
+
+{% if tasks %}
+<ul class="task-list">
+    {% for task in tasks %}
+    <li class="task {% if task.done %}done{% endif %}">
+        <form class="inline" action="{% url 'toggle_task' task.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="icon-btn" title="Toggle">
+                {% if task.done %}✅{% else %}⬜{% endif %}
+            </button>
+        </form>
+        <span class="title">{{ task.title }}</span>
+        <span class="badge">{{ task.get_priority_display }}</span>
+        <form class="inline" action="{% url 'delete_task' task.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="icon-btn" title="Delete">🗑️</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="muted"><em>No tasks yet. Add one above!</em></p>
+{% endif %}
+{% endblock %}
