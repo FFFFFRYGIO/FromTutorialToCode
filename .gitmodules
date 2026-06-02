@@ -1,3 +1,6 @@
 [submodule "tutorials/AI_Coding_101_Ultimate_Prompt_Guide_37_tips/prompts"]
 	path = tutorials/AI_Coding_101_Ultimate_Prompt_Guide_37_tips/prompts
 	url = https://github.com/VoloBuilds/prompts.git
+[submodule "tutorials/The_Ultimate_FastAPI_React_Full_Stack_Project_Deploy_This_and_You_re_Set/Choose-Your-Own-Adventure-AI"]
+	path = tutorials/The_Ultimate_FastAPI_React_Full_Stack_Project_Deploy_This_and_You_re_Set/Choose-Your-Own-Adventure-AI
+	url = https://github.com/techwithtim/Choose-Your-Own-Adventure-AI.git
