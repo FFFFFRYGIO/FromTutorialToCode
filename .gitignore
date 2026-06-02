@@ -6,3 +6,6 @@
 
 # Python cache/bytecode
 **/__pycache__/
+
+# sqlite database
+**/*.sqlite3
