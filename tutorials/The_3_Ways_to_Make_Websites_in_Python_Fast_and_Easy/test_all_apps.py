@@ -8,6 +8,7 @@ can run:
 
 without activating the venv first.
 """
+
 from __future__ import annotations
 
 import os
@@ -110,7 +111,9 @@ def test_flask() -> None:
         record("HTML has tasks", b"Flask Tasks" in r.data, "page title present")
 
         r = client.get("/api/tasks")
-        record("GET /api/tasks", r.status_code == 200 and r.is_json, f"count={len(r.json)}")
+        record(
+            "GET /api/tasks", r.status_code == 200 and r.is_json, f"count={len(r.json)}"
+        )
 
         r = client.post("/api/tasks", json={"title": "Test from smoke test"})
         record("POST /api/tasks", r.status_code == 201, f"status={r.status_code}")
@@ -207,7 +210,6 @@ def test_django() -> None:
 
         django.setup()
         from django.test import Client  # noqa: E402
-
         from tasks.models import Task  # noqa: E402
 
         Task.objects.all().delete()
@@ -224,7 +226,11 @@ def test_django() -> None:
             r.status_code == 302,
             f"redirect to {r.headers.get('Location', '')}",
         )
-        record("Task created", Task.objects.filter(title="Added via test").exists(), "in DB")
+        record(
+            "Task created",
+            Task.objects.filter(title="Added via test").exists(),
+            "in DB",
+        )
 
         task = Task.objects.first()
         assert task is not None
@@ -292,7 +298,9 @@ def test_streamlit() -> None:
         if ok:
             try:
                 hr = httpx.get(f"{url}/_stcore/health", timeout=3.0)
-                record("Health endpoint", hr.status_code == 200, f"status={hr.status_code}")
+                record(
+                    "Health endpoint", hr.status_code == 200, f"status={hr.status_code}"
+                )
             except Exception:
                 record("Health endpoint", True, "skipped (health URL unavailable)")
     except Exception as e:

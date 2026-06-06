@@ -1,4 +1,5 @@
 """Project-level URL configuration."""
+
 from django.contrib import admin
 from django.urls import include, path
 

@@ -1,4 +1,5 @@
 """Views — mixing a class-based view with simple function views."""
+
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView

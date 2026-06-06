@@ -48,7 +48,9 @@ class Task:
     id: int
     title: str
     done: bool = False
-    created_at: str = field(default_factory=lambda: datetime.now().isoformat(timespec="seconds"))
+    created_at: str = field(
+        default_factory=lambda: datetime.now().isoformat(timespec="seconds")
+    )
 
 
 _id_counter = count(1)

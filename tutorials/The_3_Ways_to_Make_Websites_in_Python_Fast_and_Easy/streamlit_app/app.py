@@ -171,9 +171,7 @@ def render_widgets() -> None:
         st.subheader("Common inputs")
         name = st.text_input("Your name", "Ada")
         age = st.number_input("Your age", min_value=0, max_value=120, value=30)
-        mood = st.select_slider(
-            "Mood", options=["😴", "🙂", "😄", "🤩"], value="😄"
-        )
+        mood = st.select_slider("Mood", options=["😴", "🙂", "😄", "🤩"], value="😄")
         favorite = st.selectbox("Favorite framework", ["Streamlit", "Flask", "Django"])
         likes = st.multiselect(
             "Topics you like", ["Data", "Web", "AI", "APIs"], default=["Data", "AI"]
@@ -230,7 +228,9 @@ def render_data_explorer() -> None:
 
     f1, f2, f3 = st.columns(3)
     regions = f1.multiselect(
-        "Region", sorted(data["region"].unique()), default=sorted(data["region"].unique())
+        "Region",
+        sorted(data["region"].unique()),
+        default=sorted(data["region"].unique()),
     )
     products = f2.multiselect(
         "Product",
@@ -376,9 +376,7 @@ def render_forms() -> None:
 # ---------------------------------------------------------------------------
 def render_chat() -> None:
     st.title("Chat Interface")
-    st.caption(
-        "Streamlit has native chat primitives. This demo echoes a canned reply."
-    )
+    st.caption("Streamlit has native chat primitives. This demo echoes a canned reply.")
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):

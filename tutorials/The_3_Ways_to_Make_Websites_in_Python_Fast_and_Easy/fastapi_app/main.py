@@ -75,7 +75,10 @@ TASKS: dict[int, Task] = {}
 
 
 def _seed() -> None:
-    for title, prio in [("Learn FastAPI", Priority.high), ("Read the docs", Priority.low)]:
+    for title, prio in [
+        ("Learn FastAPI", Priority.high),
+        ("Read the docs", Priority.low),
+    ]:
         tid = next(_id_counter)
         TASKS[tid] = Task(
             id=tid, title=title, priority=prio, done=False, created_at=datetime.now()
