@@ -91,9 +91,9 @@ def add():
 
 @app.route("/toggle/<int:task_id>", methods=["POST"])
 def toggle(task_id: int):
-    task = TASKS.get(task_id)
-    if task is None:
+    if task_id not in TASKS:
         abort(404)
+    task = TASKS[task_id]
     task.done = not task.done
     return redirect(url_for("index"))
 

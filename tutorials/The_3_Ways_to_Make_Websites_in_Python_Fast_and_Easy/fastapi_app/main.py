@@ -21,7 +21,7 @@ Then open:
 from __future__ import annotations
 
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from itertools import count
 from typing import Annotated
 
@@ -38,7 +38,7 @@ app = FastAPI(
 # ---------------------------------------------------------------------------
 # Models
 # ---------------------------------------------------------------------------
-class Priority(str, Enum):
+class Priority(StrEnum):
     low = "low"
     medium = "medium"
     high = "high"

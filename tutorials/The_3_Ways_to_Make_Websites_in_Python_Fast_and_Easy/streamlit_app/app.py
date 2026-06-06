@@ -347,7 +347,10 @@ def render_forms() -> None:
         if "@" not in email:
             st.error("Please enter a valid email address.")
         else:
-            st.success(f"Signed up **{email}** on the **{plan}** plan.")
+            newsletter_note = " (newsletter on)" if newsletter else ""
+            st.success(
+                f"Signed up **{email}** on the **{plan}** plan{newsletter_note}."
+            )
             st.balloons()
 
     st.divider()
