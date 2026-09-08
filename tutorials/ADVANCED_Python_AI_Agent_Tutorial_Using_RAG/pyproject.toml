@@ -10,7 +10,16 @@ dependencies = [
     "llama-index-experimental>=0.6.6",
     "llama-index-readers-file>=0.6.0",
     "mistralai==1.9.3",
+    "nltk>=3.10.3",
     "pandas>=2.2.3",
     "polars>=1,<2",
     "python-dotenv>=1.2.2",
 ]
+
+# nltk arrives transitively via llama-index-core. It is pinned to an unreleased
+# upstream commit because GHSA-8mgp-746c-j5xp (CVE-2026-81726) affects every
+# published release up to and including 3.10.3, the newest on PyPI. The fixes
+# are merged on nltk's develop branch (PRs #3757, #3759, #3813). Drop this pin
+# and return to a plain version constraint once a release above 3.10.3 ships.
+[tool.uv.sources]
+nltk = { git = "https://github.com/nltk/nltk", rev = "d3a57de86a01d571c8a97cc74c7691b8a0c024b9" }
