@@ -1,0 +1,100 @@
+# Dependabot version updates + grouped security updates
+# Docs: https://docs.github.com/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directories:
+      - "/tutorials/Learn_Docker_and_Deploy_to_AWS_Beginner_Tutorial"
+      - "/tutorials/The_3_Ways_to_Make_Websites_in_Python_Fast_and_Easy"
+      - "/tutorials/The_3_Ways_to_Make_Websites_in_Python_Fast_and_Easy/django_app"
+      - "/tutorials/The_3_Ways_to_Make_Websites_in_Python_Fast_and_Easy/fastapi_app"
+      - "/tutorials/The_3_Ways_to_Make_Websites_in_Python_Fast_and_Easy/flask_app"
+      - "/tutorials/The_3_Ways_to_Make_Websites_in_Python_Fast_and_Easy/streamlit_app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      pip-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      pip-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "uv"
+    directories:
+      - "/"
+      - "/tutorials/ADVANCED_Python_AI_Agent_Tutorial_Using_RAG"
+      - "/tutorials/How_to_automate_Notion_with_Python_Notion_API_Tutorial"
+      - "/tutorials/Python_Advanced_AI_Agent_Tutorial_LangGraph_LangChain_Firecrawl_and_More/advanced_agent"
+      - "/tutorials/Python_Advanced_AI_Agent_Tutorial_LangGraph_LangChain_Firecrawl_and_More/simple_agent"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      uv-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      uv-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/tutorials/Learn_Docker_and_Deploy_to_AWS_Beginner_Tutorial"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      docker-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      docker-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "docker-compose"
+    directory: "/tutorials/Learn_Docker_and_Deploy_to_AWS_Beginner_Tutorial"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      docker_compose-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      docker_compose-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      gitsubmodule-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      gitsubmodule-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
