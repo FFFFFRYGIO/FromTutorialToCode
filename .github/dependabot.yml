@@ -47,6 +47,10 @@ updates:
         applies-to: security-updates
         patterns:
           - "*"
+    ignore:
+      # llama-index-finetuning still needs the mistralai 1.x API; 2.x+ breaks the RAG tutorial
+      - dependency-name: "mistralai"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "docker"
     directory: "/tutorials/Learn_Docker_and_Deploy_to_AWS_Beginner_Tutorial"
     schedule:
