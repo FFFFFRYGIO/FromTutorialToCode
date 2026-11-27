@@ -53,7 +53,7 @@ updates:
         update-types: ["version-update:semver-major"]
       # llama-index-experimental (RAG tutorial, no longer maintained) pins pandas<2.3
       - dependency-name: "pandas"
-        update-types: ["version-update:semver-major"]
+        versions: [">=2.3"]
   - package-ecosystem: "docker"
     directory: "/tutorials/Learn_Docker_and_Deploy_to_AWS_Beginner_Tutorial"
     schedule:
